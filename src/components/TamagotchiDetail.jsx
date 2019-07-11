@@ -11,15 +11,13 @@ function TamagotchiDetail(props){
       <h4>Tiredness: {props.selectedTamagotchi.tiredness}</h4>
       <h4>Hunger: {props.selectedTamagotchi.hunger}</h4>
       <hr/>
-      <button>Feed</button>
-      <button>Play</button>
-      <button>Sleep</button>
     </div>
   );
 }
 
+
 TamagotchiDetail.propTypes = {
-  selectedTamagotchi: PropTypes.object
+  selectedTamagotchi: PropTypes.object,
 };
 
 export default TamagotchiDetail;

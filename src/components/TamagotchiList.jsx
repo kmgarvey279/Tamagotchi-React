@@ -11,6 +11,7 @@ function TamagotchiList(props){
   }
   return (
     <div>
+
       {optionalSelectedTamagotchiContent}
       {Object.keys(props.tamagotchiList).map(function(tamagotchiId) {
         var tamagotchi = props.tamagotchiList[tamagotchiId];
@@ -29,6 +30,9 @@ function TamagotchiList(props){
           happinessStatus={tamagotchi.happinessStatus}
           key={tamagotchi.id}
           onTamagotchiSelection={props.onTamagotchiSelection}
+          onPlayButtonClick={props.onPlayButtonClick}
+          onFeedButtonClick={props.onFeedButtonClick}
+          onSleepButtonClick={props.onSleepButtonClick}
           tamagotchiId={tamagotchiId}/>;
       })}
     </div>
@@ -37,7 +41,10 @@ function TamagotchiList(props){
 
 Tamagotchi.propTypes = {
   tamagotchiList: PropTypes.object,
-  onTamagotchiSelection: PropTypes.func
+  onTamagotchiSelection: PropTypes.func,
+  onPlayButtonClick: PropTypes.func,
+  onFeedButtonClick: PropTypes.func,
+  onSleepButtonClick: PropTypes.func
 };
 
 export default TamagotchiList;

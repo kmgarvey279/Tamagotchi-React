@@ -12,11 +12,11 @@ function NewTamagotchiForm(props){
   function handleNewTamagotchiFormSubmission(event) {
     event.preventDefault();
     let image = '';
-    if (_type.value == 'charmander'){
+    if (_type.value == 'Charmander'){
       image = <img src={charmander} weight="200" height="200"/>;
-    } else if (_type.value == 'bulbasaur'){
+    } else if (_type.value == 'Bulbasaur'){
       image = <img src={bulbasaur} weight="200" height="200"/>;
-    } else if (type.value == squirtle){
+    } else if (type.value == 'Squirtle'){
       image = <img src={squirtle} weight="200" height="200"/>;
     }
     props.onNewTamagotchiCreation({name: _name.value, type: _type.value, timeOpen: new Moment(), happiness: 15, tiredness: 1, hunger: 1, stage: 1, image, experence: 0, status: "alive", happinessStatus: "Happy", hungerStatus: "Full", tirednessStatus: "Rested"});
