@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function Header(){
   return (
-    <div>
+    <div id="header">
       <style jsx>{`
-        div {
+        div#header {
           background-color:red;
           border: solid black 2px;
           text-align: center;

@@ -168,20 +168,29 @@ updateHunger(id) {
 
   play(id) {
     var newMasterTamagotchiList = Object.assign({}, this.state.masterTamagotchiList);
-    console.log(newMasterTamagotchiList[id]);
-    console.log(this.state)
-    console.log(id)
-    newMasterTamagotchiList[id].happiness = newMasterTamagotchiList[id].happiness + 5;
+    if (newMasterTamagotchiList[id].happiness > 15){
+      newMasterTamagotchiList[id].happiness = 20;
+    } else {
+      newMasterTamagotchiList[id].happiness = newMasterTamagotchiList[id].happiness + 5;
+    }
   }
 
   feed(id) {
     var newMasterTamagotchiList = Object.assign({}, this.state.masterTamagotchiList);
-    newMasterTamagotchiList[id].hunger = newMasterTamagotchiList[id].hunger - 5;
+    if (newMasterTamagotchiList[id].hunger < 5) {
+      newMasterTamagotchiList[id].hunger = 0;
+    } else {
+      newMasterTamagotchiList[id].hunger = newMasterTamagotchiList[id].hunger - 5;
+    }
   }
 
   sleep(id) {
     var newMasterTamagotchiList = Object.assign({}, this.state.masterTamagotchiList);
-    newMasterTamagotchiList[id].tiredness = newMasterTamagotchiList[id].tiredness - 5;
+    if (newMasterTamagotchiList[id].tiredness < 5) {
+      newMasterTamagotchiList[id].tiredness = 0;
+    } else {
+      newMasterTamagotchiList[id].tiredness = newMasterTamagotchiList[id].sleep - 5;
+    }
   }
 
   render(){

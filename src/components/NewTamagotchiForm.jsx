@@ -16,12 +16,16 @@ function NewTamagotchiForm(props){
       image = <img src={charmander} weight="200" height="200"/>;
     } else if (_type.value == 'Bulbasaur'){
       image = <img src={bulbasaur} weight="200" height="200"/>;
-    } else if (type.value == 'Squirtle'){
+    } else if (_type.value == 'Squirtle'){
       image = <img src={squirtle} weight="200" height="200"/>;
     }
     props.onNewTamagotchiCreation({name: _name.value, type: _type.value, timeOpen: new Moment(), happiness: 15, tiredness: 1, hunger: 1, stage: 1, image, experence: 0, status: "alive", happinessStatus: "Happy", hungerStatus: "Full", tirednessStatus: "Rested"});
     _name.value = '';
     _type.value = '';
+  }
+
+  function handleChange(event){
+    ;
   }
 
   return (
@@ -32,11 +36,14 @@ function NewTamagotchiForm(props){
           id='name'
           placeholder='Name'
           ref={(input) => {_name = input;}}/>
-        <input
+        <select
           type='text'
           id='type'
-          placeholder='type'
-          ref={(input) => {_type = input;}}/>
+          ref={select => {_type = select}}>
+            <option value="Bulbasaur">Bulbasaur</option>
+            <option value="Charmander">Charmander</option>
+            <option value="Squirtle">Squirtle</option>
+          </select>
         <button type='submit'>Create Tamagotchi</button>
       </form>
     </div>
@@ -44,7 +51,8 @@ function NewTamagotchiForm(props){
   }
 
   NewTamagotchiForm.propTypes = {
-    onNewTamagotchiCreation: PropTypes.func
+    onNewTamagotchiCreation: PropTypes.func,
+    handleChange: PropTypes.func
   };
 
 export default NewTamagotchiForm;
