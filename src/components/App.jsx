@@ -35,19 +35,19 @@ class App extends React.Component {
   }
 
   updateTamagotchiTime() {
-    if (newMasterTamagotchiList[tamagotchiId].status == 'alive') {
       var newMasterTamagotchiList = Object.assign({}, this.state.masterTamagotchiList);
       Object.keys(newMasterTamagotchiList).forEach(tamagotchiId => {
-        newMasterTamagotchiList[tamagotchiId].formattedTimePassed = newMasterTamagotchiList[tamagotchiId].timeOpen.fromNow(true);
-        newMasterTamagotchiList[tamagotchiId].experence = newMasterTamagotchiList[tamagotchiId].experence + 1;
-      });
-      this.updateHunger();
-      this.updateTiredness();
-      this.updateHappiness();
-      this.evolve();
-      this.setState({masterTamagotchiList: newMasterTamagotchiList});
-    }
-  }
+        if (newMasterTamagotchiList[tamagotchiId].status == 'alive') {
+            newMasterTamagotchiList[tamagotchiId].formattedTimePassed = newMasterTamagotchiList[tamagotchiId].timeOpen.fromNow(true);
+            newMasterTamagotchiList[tamagotchiId].experence = newMasterTamagotchiList[tamagotchiId].experence + 1;
+          }
+        });
+        this.updateHunger();
+        this.updateTiredness();
+        this.updateHappiness();
+        this.evolve();
+        this.setState({masterTamagotchiList: newMasterTamagotchiList});
+      }
 
   updateHunger() {
     var newMasterTamagotchiList = Object.assign({}, this.state.masterTamagotchiList);
@@ -55,6 +55,7 @@ class App extends React.Component {
       newMasterTamagotchiList[tamagotchiId].hunger = newMasterTamagotchiList[tamagotchiId].hunger + 1
       if (newMasterTamagotchiList[tamagotchiId].hunger >=20) {
         newMasterTamagotchiList[tamagotchiId].hungerStatus = "dead";
+        newMasterTamagotchiList[tamagotchiId].status = "dead";
       }
       else if (newMasterTamagotchiList[tamagotchiId].hunger >= 15) {
         newMasterTamagotchiList[tamagotchiId].hungerStatus = "very hungry";
@@ -71,6 +72,7 @@ class App extends React.Component {
       newMasterTamagotchiList[tamagotchiId].happiness = newMasterTamagotchiList[tamagotchiId].happiness - 1
       if (newMasterTamagotchiList[tamagotchiId].happiness <= 0) {
         newMasterTamagotchiList[tamagotchiId].happinessStatus = "Dead";
+        newMasterTamagotchiList[tamagotchiId].status = "dead";
       }
       else if (newMasterTamagotchiList[tamagotchiId].happiness <= 5) {
         newMasterTamagotchiList[tamagotchiId].happinessStatus = "Very unhappy";
@@ -87,6 +89,7 @@ class App extends React.Component {
       newMasterTamagotchiList[tamagotchiId].tiredness = newMasterTamagotchiList[tamagotchiId].tiredness + 1
       if (newMasterTamagotchiList[tamagotchiId].tiredness >= 20) {
         newMasterTamagotchiList[tamagotchiId].tirednessStatus = "Dead";
+        newMasterTamagotchiList[tamagotchiId].status = "dead";
       }
       else if (newMasterTamagotchiList[tamagotchiId].tiredness >= 15) {
         newMasterTamagotchiList[tamagotchiId].tirednessStatus = "Very Tired";

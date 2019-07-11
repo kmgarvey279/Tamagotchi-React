@@ -14,12 +14,45 @@ function Tamagotchi(props){
       <h5>Current Hunger Level: {props.hunger} {props.hungerStatus}</h5>
       <h5>Current Tiredness Level: {props.tiredness} {props.tirednessStatus}</h5>
     </div>;
-
-    return (
-      <div onClick={() => {props.onTamagotchiSelection(props.tamagotchiId);}}>
-        {tamagotchiInformation}
-      </div>
-    );
+    if (props.status == "dead") {
+      return (
+        <div id="thisTamagotchi" onClick={() => {props.onTamagotchiSelection(props.tamagotchiId);}}>
+          <style jsx>{`
+            div#thisTamagotchi {
+              background-color: gray;
+            }
+            img {
+              filter: gray;
+              -webkit-filter: grayscale(1);
+              filter: grayscale(1);
+            }
+          `}</style>
+          {tamagotchiInformation}
+        </div>
+      );
+    } else if (props.happiness < 5 || props.hunger > 15  || props.tiredness > 15) {
+      return (
+        <div id="thisTamagotchi" onClick={() => {props.onTamagotchiSelection(props.tamagotchiId);}}>
+          <style jsx>{`
+            div#thisTamagotchi {
+              background-color: red;
+            }
+          `}</style>
+          {tamagotchiInformation}
+        </div>
+      );
+    } else {
+      return (
+        <div id="thisTamagotchi" onClick={() => {props.onTamagotchiSelection(props.tamagotchiId);}}>
+          <style jsx>{`
+            div#thisTamagotchi {
+              background-color: green;
+            }
+          `}</style>
+          {tamagotchiInformation}
+        </div>
+      );
+    }
   }
 
 Tamagotchi.propTypes = {

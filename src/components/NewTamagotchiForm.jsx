@@ -9,7 +9,6 @@ function NewTamagotchiForm(props){
   let _name = null;
   let _type = null;
 
-
   function handleNewTamagotchiFormSubmission(event) {
     event.preventDefault();
     let image = '';
